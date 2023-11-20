@@ -3,9 +3,7 @@ Set-Location sos2
 New-Item download -ItemType Directory
 Invoke-WebRequest -URI http://sos.enix.org/wiki-fr/upload/SOSDownload/sos-code-art1.tgz -OutFile ./download/sos-code-art1.tgz
 
-# Set-Location download
 tar -xvzf ./download/sos-code-art1.tgz -C ./download
-# Set-Location ..
 
 New-Item build -ItemType Directory
 New-Item buildenv -ItemType Directory
@@ -16,7 +14,6 @@ Copy-Item ./download/sos-code-article1/drivers ./drivers -Recurse
 Copy-Item ./download/sos-code-article1/hwcore ./hwcore -Recurse
 Copy-Item ./download/sos-code-article1/sos ./sos -Recurse
 
-# New-Item .gitignore
 Write-Output "/dist
 /build" > .gitignore
 
