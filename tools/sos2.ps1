@@ -17,6 +17,6 @@ Copy-Item ./download/sos-code-article1/hwcore ./hwcore -Recurse
 Copy-Item ./download/sos-code-article1/sos ./sos -Recurse
 
 # New-Item .gitignore
-Write-Output "dist/
-build/" > .gitignore
+Write-Output "/dist
+/build" > .gitignore
 
