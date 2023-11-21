@@ -14,6 +14,7 @@ Copy-Item ./download/sos-code-article1/drivers ./drivers -Recurse
 Copy-Item ./download/sos-code-article1/hwcore ./hwcore -Recurse
 Copy-Item ./download/sos-code-article1/sos ./sos -Recurse
 
-Write-Output "/dist
-/build" > .gitignore
+"dist/
+build/" | Out-File -FilePath ./.gitignore.txt -Encoding ascii
+
 
