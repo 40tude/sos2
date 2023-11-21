@@ -1,7 +1,7 @@
 ENTRY(start)
 
 SECTIONS {
-    . = 1M;
+    . = 3M;
 
     .boot :
     {

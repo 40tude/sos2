@@ -16,5 +16,5 @@ cp -r ./download/sos-code-article1/drivers ./drivers
 cp -r ./download/sos-code-article1/hwcore ./hwcore 
 cp -r ./download/sos-code-article1/sos ./sos 
 
-echo "/dist
-/build" > .gitignore
+echo "dist/
+build/" > .gitignore

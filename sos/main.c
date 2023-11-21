@@ -87,56 +87,73 @@
 //   return;
 // }
 
+// void sos_main(unsigned long magic, unsigned long addr) {
+//   sos_bochs_setup();
+//   sos_x86_videomem_setup();
+//   sos_x86_videomem_cls(SOS_X86_VIDEO_BG_BLUE);
+
+//   int line = 0;
+//   line++;
+//   if (magic == MULTIBOOT2_BOOTLOADER_MAGIC) {
+//     sos_x86_videomem_printf(line, 0,
+//                             SOS_X86_VIDEO_FG_YELLOW | SOS_X86_VIDEO_BG_BLUE,
+//                             "Valid magic number   : 0x%x", (unsigned)magic);
+
+//   } else {
+//     sos_x86_videomem_printf(line, 0,
+//                             SOS_X86_VIDEO_FG_YELLOW | SOS_X86_VIDEO_BG_BLUE,
+//                             "Invalid magic number : 0x%x", (unsigned)magic);
+//   }
+
+//   struct multiboot_tag *tag;
+//   for (tag = (struct multiboot_tag *)(addr + 8);
+//        tag->type != MULTIBOOT_TAG_TYPE_END;
+//        tag = (struct multiboot_tag *)((multiboot_uint8_t *)tag +
+//                                       ((tag->size + 7) & ~7))) {
+
+//     switch (tag->type) {
+//     case MULTIBOOT_TAG_TYPE_BASIC_MEMINFO:
+//       line++;
+//       sos_x86_videomem_printf(
+//           line, 0, SOS_X86_VIDEO_FG_YELLOW | SOS_X86_VIDEO_BG_BLUE,
+//           "mem_lower            : %d KB",
+//           ((struct multiboot_tag_basic_meminfo *)tag)->mem_lower);
+
+//       line++;
+//       sos_x86_videomem_printf(
+//           line, 0, SOS_X86_VIDEO_FG_YELLOW | SOS_X86_VIDEO_BG_BLUE,
+//           "mem_upper            : %d KB",
+//           ((struct multiboot_tag_basic_meminfo *)tag)->mem_upper);
+//       break;
+
+//     case MULTIBOOT_TAG_TYPE_BOOT_LOADER_NAME:
+//       line++;
+//       sos_x86_videomem_printf(line, 0,
+//                               SOS_X86_VIDEO_FG_YELLOW |
+//                               SOS_X86_VIDEO_BG_BLUE, "Boot loader name     :
+//                               %s",
+//                               ((struct multiboot_tag_string *)tag)->string);
+//       break;
+//     }
+//   }
+
+//   sos_bochs_putstring("Message in a bochs");
+
+//   for (;;)
+//     continue;
+
+//   return;
+// }
+
 void sos_main(unsigned long magic, unsigned long addr) {
   sos_bochs_setup();
   sos_x86_videomem_setup();
   sos_x86_videomem_cls(SOS_X86_VIDEO_BG_BLUE);
 
-  int line = 0;
-  line++;
-  if (magic == MULTIBOOT2_BOOTLOADER_MAGIC) {
-    sos_x86_videomem_printf(line, 0,
-                            SOS_X86_VIDEO_FG_YELLOW | SOS_X86_VIDEO_BG_BLUE,
-                            "Valid magic number   : 0x%x", (unsigned)magic);
-
-  } else {
-    sos_x86_videomem_printf(line, 0,
-                            SOS_X86_VIDEO_FG_YELLOW | SOS_X86_VIDEO_BG_BLUE,
-                            "Invalid magic number : 0x%x", (unsigned)magic);
-  }
-
-  struct multiboot_tag *tag;
-  for (tag = (struct multiboot_tag *)(addr + 8);
-       tag->type != MULTIBOOT_TAG_TYPE_END;
-       tag = (struct multiboot_tag *)((multiboot_uint8_t *)tag +
-                                      ((tag->size + 7) & ~7))) {
-
-    switch (tag->type) {
-    case MULTIBOOT_TAG_TYPE_BASIC_MEMINFO:
-      line++;
-      sos_x86_videomem_printf(
-          line, 0, SOS_X86_VIDEO_FG_YELLOW | SOS_X86_VIDEO_BG_BLUE,
-          "mem_lower            : %d KB",
-          ((struct multiboot_tag_basic_meminfo *)tag)->mem_lower);
-
-      line++;
-      sos_x86_videomem_printf(
-          line, 0, SOS_X86_VIDEO_FG_YELLOW | SOS_X86_VIDEO_BG_BLUE,
-          "mem_upper            : %d KB",
-          ((struct multiboot_tag_basic_meminfo *)tag)->mem_upper);
-      break;
-
-    case MULTIBOOT_TAG_TYPE_BOOT_LOADER_NAME:
-      line++;
-      sos_x86_videomem_printf(line, 0,
-                              SOS_X86_VIDEO_FG_YELLOW | SOS_X86_VIDEO_BG_BLUE,
-                              "Boot loader name     : %s",
-                              ((struct multiboot_tag_string *)tag)->string);
-      break;
-    }
-  }
-
-  sos_bochs_putstring("Message in a bochs");
+  int bob = 42;
+  sos_x86_videomem_printf(0, 0, SOS_X86_VIDEO_FG_YELLOW | SOS_X86_VIDEO_BG_BLUE,
+                          "Adr of an initilized variable    : 0x%x",
+                          (unsigned)(&bob));
 
   for (;;)
     continue;
