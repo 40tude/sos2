@@ -9,22 +9,22 @@ SECTIONS {
       *(.multiboot_header)
     }
 
-    .text : ALIGN(CONSTANT(MAXPAGESIZE)) 
+    .text ALIGN(4096) :
     {
       *(.text)
     }
     
-    .data : ALIGN(CONSTANT(MAXPAGESIZE)) 
+    .data . :
     {   
       *(.data*) 
     }
 
-    .rodata : ALIGN(CONSTANT(MAXPAGESIZE)) 
+    .rodata . :
     {   
       *(.rodata*)
     }
 
-    .bss : ALIGN(CONSTANT(MAXPAGESIZE)) 
+    .bss SIZEOF(.rodata) + ADDR(.rodata) :
     {   
       *(.bss)
     }
