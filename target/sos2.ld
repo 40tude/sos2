@@ -1,16 +1,43 @@
 ENTRY(start)
 
 SECTIONS {
-    . = 3M;
+    . = 2M;
 
-    .boot :
+    .zoubida :
     {
-        /* ensure that the multiboot header is at the beginning */
-        *(.multiboot_header)
+      /* ensure that the multiboot header is at the beginning */
+      *(.multiboot_header)
     }
 
-    .text :
+    .text ALIGN(4096) :
     {
-        *(.text)
+      *(.text)
+    }
+    
+    .data . :
+    {   
+      *(.data*) 
+    }
+
+    .rodata . :
+    {   
+      *(.rodata*)
+    }
+
+    .bss SIZEOF(.rodata) + ADDR(.rodata) :
+    {   
+      *(.bss)
+    }
+
+    /DISCARD/ :{
+      *(.comment)
     }
 }
+
+/*
+      *(.note*)
+      *(.indent)
+      *(.comment)
+      *(.stab)
+      *(.stabstr)
+*/
