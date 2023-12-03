@@ -1,5 +1,3 @@
-# Pour CFLAGS -fno-asynchronous-unwind-tables
-
 CC      = gcc
 CFLAGS  = -Wall -nostdlib -nostdinc -ffreestanding -m32 -fno-asynchronous-unwind-tables
 LDFLAGS = --warn-common -melf_i386 --no-warn-rwx-segments

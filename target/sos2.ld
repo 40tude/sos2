@@ -33,11 +33,3 @@ SECTIONS {
       *(.comment)
     }
 }
-
-/*
-      *(.note*)
-      *(.indent)
-      *(.comment)
-      *(.stab)
-      *(.stabstr)
-*/
