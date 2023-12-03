@@ -4,6 +4,7 @@ CC      = gcc
 CFLAGS  = -Wall -nostdlib -nostdinc -ffreestanding -m32 -fno-asynchronous-unwind-tables
 LDFLAGS = --warn-common -melf_i386 --no-warn-rwx-segments
 # --no-warn-rwx-segments : https://github.com/raspberrypi/pico-sdk/issues/1029
+
 PWD     := $(shell pwd)
 
 ASM_SOURCE_FILES := $(shell find bootstrap -name *.asm)
